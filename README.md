@@ -1,7 +1,11 @@
 # seed-previewer
+Depends on code from Anne at https://gitlab.com/mocchapi to run. She wrote the code that lets you use any API keys to tweet to any account.
+She makes cool stuff!
+
 All the code for my twitter bot that posts images of Minecraft seeds
 
-The python code should run fine anywhere. I made it on Windows, so it may have issues elsewhere. Realistically it can be used to post any images from a folder since that code is fairly generic. The real Minecraft stuff is in the AutoHotKey script.
+The python code should run fine anywhere. You will need a set of Twitter API key credentials for the tweeting to work.
+I made it on Windows, so it may have issues elsewhere. Realistically it can be used to post any images from a folder since that code is fairly generic. The real Minecraft stuff is in the AutoHotKey script.
 
 My AutoHotKey script:
 Deletes the top world
