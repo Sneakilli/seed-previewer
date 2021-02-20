@@ -11,7 +11,8 @@ TimeFile = "LastTweetTime.txt" #File name for keeping track of when to tweet
 mcVersion = "1.16.5" #Tweets this as the minecraft version
 PostingHour = 17 #When should the bot tweet each day
 
-ShouldTweet = True #Whether the bot should tweet or remove directories. Good for debugging
+ShouldTweet = False #Whether the bot should tweet or remove directories. Good for debugging
+ForceTweet = False
 
 def DoTweet():
     print ("Making a tweet")
@@ -37,7 +38,7 @@ def DeleteDirectory(dirtodelete):
     os.rmdir(dirtodelete)
 
 def DoChecks(lasttweet):
-    if (str(datetime.now().day) != str(lasttweet)) and (datetime.now().hour >= PostingHour):
+    if (ForceTweet or (str(datetime.now().day) != str(lasttweet)) and (datetime.now().hour >= PostingHour)):
         return str(DoTweet())
 
 def Main():
@@ -48,11 +49,11 @@ def Main():
         
     with open(currentpath + TimeFile, "r") as f:
         tweetday = DoChecks(f.read())
-        
-    with open(currentpath + TimeFile, "w") as f:
-        if (tweetday != None):
-            f.write(tweetday)
-            print (tweetday)
+
+    if (tweetday != None):
+        with open(currentpath + TimeFile, "w") as f:
+                f.write(tweetday)
+                print (tweetday)
 
 
     
